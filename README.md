@@ -1,10 +1,12 @@
-# Mjakeman Gnome-nightly
+# Homebrew GNOME Apps
+
+A collection of GNOME GTK 4 apps ported to macOS. At the moment, only GNOME Builder really works.
 
 ## How do I install these formulae?
 
-`brew install mjakeman/gnome-nightly/<formula>`
+`brew install mjakeman/gnome/<formula>`
 
-Or `brew tap mjakeman/gnome-nightly` and then `brew install <formula>`.
+Or `brew tap mjakeman/gnome` and then `brew install <formula>`.
 
 ## Documentation
 
