@@ -1,4 +1,4 @@
-class Libadwaita < Formula
+class LibadwaitaDev < Formula
   desc "Building blocks for modern adaptive GNOME applications"
   homepage "https://gnome.pages.gitlab.gnome.org/libadwaita/"
   url "https://download.gnome.org/sources/libadwaita/1.2/libadwaita-1.2.alpha.tar.xz"
@@ -13,22 +13,13 @@ class Libadwaita < Formula
     regex(/libadwaita-(\d+(?:\.\d+)+)\.t/i)
   end
 
-  bottle do
-    sha256 arm64_monterey: "d60e5af15a33483b3c9969d87cb43d12931a42bf1339158e9991081096182ebb"
-    sha256 arm64_big_sur:  "e567ef3ebdfaa6c865bd253faa5695834b1884588d1cc539cddc5469084a9355"
-    sha256 monterey:       "0c8bc07e01e763adb002e02502600afc3c5ffd926b3a67e63c949432cc5ac068"
-    sha256 big_sur:        "de89385d439f30a714295b9c687c11c47327fd89f5bf48dfe9878f724f9ded53"
-    sha256 catalina:       "2bc7151c70c8061696433a4855e20da2d9f77e69ff52acfafa0586b74af84e39"
-    sha256 x86_64_linux:   "f7e787217cdde92973ef1a6f2d2036adebcbb406f43750d0ea4186547873ded1"
-  end
-
   depends_on "gobject-introspection" => :build
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
   depends_on "sassc" => :build
   depends_on "vala" => :build
-  depends_on "gtk4"
+  depends_on "gtk4-dev"
   depends_on "glib-utils" => :build
 
   def install

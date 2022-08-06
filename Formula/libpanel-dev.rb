@@ -1,11 +1,11 @@
 # Documentation: https://docs.brew.sh/Formula-Cookbook
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class Libpanel < Formula
+class LibpanelDev < Formula
   desc ""
   homepage ""
-  url "https://download.gnome.org/sources/libpanel/1.0/libpanel-1.0.alpha.tar.xz"
-  sha256 "370b39bf544c65ff732927817ede337cb8a15aa36d7081cdb91b593c040d3195"
+  url "https://download.gnome.org/sources/libpanel/1.0/libpanel-1.0.alpha1.tar.xz"
+  sha256 "6103db9f0aab15376609d6140721f6d6aef28964a4295b083725ff59ecb97319"
   license ""
 
   depends_on "meson" => :build
@@ -13,7 +13,7 @@ class Libpanel < Formula
   depends_on "gobject-introspection" => :build
   depends_on "pkg-config" => :build
   depends_on "vala" => :build
-  depends_on "libadwaita"
+  depends_on "libadwaita-dev"
   depends_on "glib-utils" => :build
 
   def install

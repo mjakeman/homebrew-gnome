@@ -19,12 +19,20 @@ class Rnote < Formula
   depends_on "appstream-glib"
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
+    # stop meson_post_install.py from doing what needs to be done in the post_install step
+    ENV["DESTDIR"] = ""
     mkdir "build" do
       system "meson", *std_meson_args, ".."
       system "ninja", "-v"
       system "ninja", "install", "-v"
     end
+  end
+
+  def post_install
+    system "#{Formula["glib"].opt_bin}/glib-compile-schemas",
+           "#{HOMEBREW_PREFIX}/share/glib-2.0/schemas"
+    system "#{Formula["gtk4"].opt_bin}/gtk4-update-icon-cache", "-q", "-t", "-f",
+           "#{HOMEBREW_PREFIX}/share/icons/hicolor"
   end
 
   test do

@@ -1,4 +1,4 @@
-class Gtk4 < Formula
+class Gtk4Dev < Formula
   desc "Toolkit for creating graphical user interfaces"
   homepage "https://gtk.org/"
   url "https://download.gnome.org/sources/gtk/4.7/gtk-4.7.1.tar.xz"
@@ -8,15 +8,6 @@ class Gtk4 < Formula
   livecheck do
     url :stable
     regex(/gtk[._-](4\.([0-8]\d*?)?[02468](?:\.\d+)*?)\.t/i)
-  end
-
-  bottle do
-    sha256 arm64_monterey: "9fb1dfbaf68211e3afb9e407781a6627b4cc9c7ee0077a4794f811101a7d3fa7"
-    sha256 arm64_big_sur:  "4400fdceb0e38370d8d82197dd1324d6889d66347d89fd1db58f7d5d81e8d202"
-    sha256 monterey:       "08d61fb9146b92e4c96879cab866e0583199397425a8d0cb1783422a64bfed79"
-    sha256 big_sur:        "7323e811e12505fff6593de1e1194b69ef4ddde9f995dcff7406bc7b064c2b35"
-    sha256 catalina:       "c18015cdcadd1895370794444d6b959551fb99e52a81013057931c4ce4c89473"
-    sha256 x86_64_linux:   "c9f3e862e0a432f6df5482260ee38c4bb4ba12a17308c6c447b27c356e1ba387"
   end
 
   depends_on "docbook" => :build

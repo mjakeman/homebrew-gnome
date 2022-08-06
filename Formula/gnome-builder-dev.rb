@@ -1,7 +1,7 @@
 # Documentation: https://docs.brew.sh/Formula-Cookbook
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class GnomeBuilder < Formula
+class GnomeBuilderDev < Formula
   desc "An IDE for writing GNOME-based software."
   homepage "https://gitlab.gnome.org/GNOME/gnome-builder"
   url "https://download.gnome.org/sources/gnome-builder/43/gnome-builder-43.alpha0.tar.xz"
@@ -11,13 +11,13 @@ class GnomeBuilder < Formula
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "glib-utils" => :build
-  depends_on "libadwaita"
-  depends_on "libpanel"
-  depends_on "gtksourceview5"
+  depends_on "libadwaita-dev"
+  depends_on "libpanel-dev"
+  depends_on "gtksourceview5-dev"
   depends_on "jsonrpc-glib"
   depends_on "libpeas"
-  depends_on "template-glib"
-  depends_on "vte"
+  depends_on "template-glib-dev"
+  depends_on "vte-dev"
   depends_on "cmark"
   depends_on "pcre2"
   depends_on "desktop-file-utils"
@@ -25,7 +25,7 @@ class GnomeBuilder < Formula
   # Plugins
   depends_on "llvm"
   depends_on "editorconfig"
-  depends_on "libgit2-glib"
+  depends_on "libgit2-glib-dev"
   depends_on "enchant"
 
   def install

@@ -1,16 +1,16 @@
 # Documentation: https://docs.brew.sh/Formula-Cookbook
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class Vte < Formula
+class VteDev < Formula
   desc ""
   homepage ""
-  url "https://download.gnome.org/sources/vte/0.69/vte-0.69.90.tar.xz"
-  sha256 "141e80bee504c6fe72595aea90fd854afc4f344917b1b5bfdf83aa3c839604cd"
+  url "https://gitlab.gnome.org/GNOME/vte/-/archive/vte-0-70/vte-vte-0-70.tar.bz2"
+  sha256 "6dbe4a47dccefa8733fe454ce724f6b181fd98dd3088a471a29d4a6ccde0a23b"
   license ""
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
-  depends_on "gtk4"
+  depends_on "gtk4-dev"
   depends_on "pcre2"
   depends_on "gnutls"
   depends_on "glib-utils" => :build
@@ -50,16 +50,15 @@ class Vte < Formula
 end
 __END__
 diff --git a/meson.build b/meson.build
-index 668325f..11236e6 100644
+index 1900504..2c8f3e9 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -221,7 +221,7 @@ libc_feature_defines = [
-   ['_XOPEN_SOURCE_EXTENDED', '1'],
- ]
+@@ -222,7 +222,7 @@ libc_feature_defines = [
  
--if host_machine.system() == 'freebsd'
-+if host_machine.system() == 'freebsd' or host_machine.system() == 'darwin'
+ system = host_machine.system()
+ 
+-if system == 'freebsd'
++if system == 'freebsd' or host_machine.system() == 'darwin'
    # Defining _POSIX_C_SOURCE above makes freebsd not expose some functionality
    # that's hidden behind __BSD_VISIBLE.  Not defininy any of the above however
    # makes it expose verything.
-
