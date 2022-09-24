@@ -20,7 +20,7 @@ class Libgit2GlibDev < Formula
   depends_on "gettext"
   depends_on "glib"
   depends_on "libgit2"
-  depends_on "glib-utils" => :build
+  depends_on "glib" => :build
 
   def install
     mkdir "build" do

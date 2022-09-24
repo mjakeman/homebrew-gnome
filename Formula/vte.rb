@@ -1,19 +1,18 @@
 # Documentation: https://docs.brew.sh/Formula-Cookbook
 #                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class VteDev < Formula
-  desc ""
-  homepage ""
-  url "https://gitlab.gnome.org/GNOME/vte/-/archive/vte-0-70/vte-vte-0-70.tar.bz2"
-  sha256 "6dbe4a47dccefa8733fe454ce724f6b181fd98dd3088a471a29d4a6ccde0a23b"
-  license ""
+class Vte < Formula
+  desc "Virtual Terminal library"
+  homepage "https://gitlab.gnome.org/GNOME/vte"
+  url "https://download.gnome.org/sources/vte/0.70/vte-0.70.0.tar.xz"
+  sha256 "93e0dd4a1bc2a7a1a62da64160a274cce456976ea1567d98591da96e2d265ae6"
+  license "LGPL-3.0-or-later"
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
-  depends_on "gtk4-dev"
+  depends_on "gtk4"
   depends_on "pcre2"
   depends_on "gnutls"
-  depends_on "glib-utils" => :build
+  depends_on "glib" => :build
   depends_on "gobject-introspection" => :build
   depends_on "vala" => :build
 

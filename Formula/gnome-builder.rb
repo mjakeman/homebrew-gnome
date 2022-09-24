@@ -1,23 +1,23 @@
 # Documentation: https://docs.brew.sh/Formula-Cookbook
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class GnomeBuilderDev < Formula
+class GnomeBuilder < Formula
   desc "An IDE for writing GNOME-based software."
   homepage "https://gitlab.gnome.org/GNOME/gnome-builder"
-  url "https://download.gnome.org/sources/gnome-builder/43/gnome-builder-43.alpha0.tar.xz"
-  sha256 "4928e88560f69a7eab88547c081787cda75bce2f395cc5a2be08f82bc6f9ba36"
+  url "https://download.gnome.org/sources/gnome-builder/43/gnome-builder-43.0.tar.xz"
+  sha256 "61585119d80fb70da3b8170249d3223839f3051a6ca8d9cefa198f00b474a58f"
   license "GPL-3.0-or-later"
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
-  depends_on "glib-utils" => :build
-  depends_on "libadwaita-dev"
-  depends_on "libpanel-dev"
-  depends_on "gtksourceview5-dev"
+  depends_on "glib" => :build
+  depends_on "libadwaita"
+  depends_on "libpanel"
+  depends_on "gtksourceview5"
   depends_on "jsonrpc-glib"
   depends_on "libpeas"
-  depends_on "template-glib-dev"
-  depends_on "vte-dev"
+  depends_on "template-glib"
+  depends_on "vte"
   depends_on "cmark"
   depends_on "pcre2"
   depends_on "desktop-file-utils"
@@ -72,36 +72,3 @@ class GnomeBuilderDev < Formula
     system "false"
   end
 end
-__END__
-diff --git a/src/libide/threading/ide-unix-fd-map.c b/src/libide/threading/ide-unix-fd-map.c
-index 305604c15c59cea7a20c7ff50bc1597c63054a24..e721347e689a204d703da207513262ea22df83da 100644
---- a/src/libide/threading/ide-unix-fd-map.c
-+++ b/src/libide/threading/ide-unix-fd-map.c
-@@ -422,6 +422,26 @@ ide_unix_fd_map_steal_from (IdeUnixFDMap  *self,
-   return TRUE;
- }
- 
-+#ifdef __APPLE__
-+static int
-+pipe2 (int      fd_pair[2],
-+       unsigned flags)
-+{
-+  int r = pipe (fd_pair);
-+
-+  if (r == -1)
-+    return -1;
-+
-+  if (flags & O_CLOEXEC)
-+    {
-+      fcntl (fd_pair[0], F_SETFD, FD_CLOEXEC);
-+      fcntl (fd_pair[1], F_SETFD, FD_CLOEXEC);
-+    }
-+
-+  return r;
-+}
-+#endif
-+
- /**
-  * ide_unix_fd_map_create_stream:
-  * @self: a #IdeUnixFdMap
-
